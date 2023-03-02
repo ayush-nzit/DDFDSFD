@@ -1,0 +1,26 @@
+<%include ./partials/header.ejs%>
+    <div class="d-flex">
+        <%allusers.forEach(function(elem){%>
+            <div class="card" style="width: 18rem; margin-left: 10px;">
+                <img src="<%=elem.photo%>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><%=elem.username%></h5>
+                  <h5 class="card-title"><%=elem.email%></h5>
+                  <small class="d-block mb-2">Like :<%= elem.like.length %></small>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="/like/<%=elem._id%>" class="btn btn-primary" ><i style="margin-right: 5px;" class="ri-heart-3-fill"></i>Like</a>   
+                  <% if(elem.id !== user.id){%>
+                     <a href="/friend/<%= elem._id%>" class="btn <%= elem.friends.indexOf(user._id)=== -1 ? 'btn-primary' :'btn-success'%>" ></i><%=elem.friends.indexOf(user._id)=== -1 ? "Friend Bnao" : "Friends" %> </a>
+                    <%}else{%>
+                       <a style='margin:7px 10px' href="/profile" class="btn btn-primary"><span class="badge rounded-pill text-bg-primary">Your Account</span>
+                       </a>  
+                        <br>
+                        <br>
+                        <a href="/delete" class="btn btn-danger">Delete</a>    
+                    <%}%>
+                </div>
+              </div>
+        <%})%>
+    </div>
+</body>
+</html>

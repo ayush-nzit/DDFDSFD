@@ -1,0 +1,36 @@
+<%include ./partials/header.ejs%>
+  <div class="container p-3">
+    <h1>Profile Page</h1>
+    <hr>
+  <div style="gap:20px; flex-wrap: wrap;" class="d-flex">
+      <div class="cards" style="width: 18rem;">
+        <h4>Welcome <%= user.username%></h4>
+        <br>
+        <div class="card-body"> 
+            <img src="<%=user.photo%>" class="img-thumbnail" alt="...">
+            <h5><%=user.username%></h5>
+            <h5><%=user.email%></h5>
+            <p class="card-text">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</p>
+                <a href="/like/<%= user._id%>" class="btn btn-primary" ><i class="ri-heart-3-fill"></i>Like</a>
+                <a href="/edit" class="btn btn-warning" ><i class="ri-pencil-fill"></i>Edit</a>
+                <a href="/delete/<%=user._id%>" class="btn btn-danger" ><i class="ri-delete-bin-fill"></i>logout</a>
+                <a style="margin-top: 7px;" href="/allusers"class="btn btn-primary" ><button style="padding: 3px;" type="submit" class="btn btn-primary">Show Allusers</button></a> 
+        </div>
+      </div>
+      <form action="/createproduct" method="post">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Product Name</label>
+          <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">price</label>
+          <input  type="text" class="form-control" id="exampleInputPassword1">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <a style="margin-top: 7px;" href="/allproduct"class="btn btn-primary" ><button style="padding: 3px;" type="submit" class="btn btn-primary">Show AllProducts</button></a> 
+  </div>
+  </div>
+</body>
+</html>
